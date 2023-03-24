@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 
 function Username() {
-  const [name, setName] = useState('Type your name');
+  const [name, setName] = useState('1');
   const [username, setUsername] = useState('');
 
   useEffect(() => {
-    fetch(`/username?name=${name}`)
-      .then(response => response.text())
-      .then(data => setUsername(data));
+    fetch(`https://jsonplaceholder.typicode.com/todos/${name}`)
+      .then(response => response.json())
+      .then(json => console.log(json))
   }, [name]);
 
   return (
